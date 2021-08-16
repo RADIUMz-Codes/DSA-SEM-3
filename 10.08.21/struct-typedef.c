@@ -1,5 +1,6 @@
 /*
-    2. Define a structure “complex” (typedef) to read two complex numbers and perform addition, subtraction of these two complex numbers and display the result.
+    2. Define a structure “complex” (typedef) to read two complex numbers and perform addition, 
+    subtraction of these two complex numbers and display the result.
 */
 
 #include <stdio.h>
