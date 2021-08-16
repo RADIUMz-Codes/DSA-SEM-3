@@ -1,3 +1,6 @@
 .cph
 *.bin
 *.exe
+test.cpp
+.vscode
+.cph
