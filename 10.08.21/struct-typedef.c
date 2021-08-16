@@ -19,8 +19,8 @@ int main()
    scanf("%f %f", &num2.real, &num2.imag);
    s= add(num1, num2);
    d= sub(num1,num2);
-   printf("Sum = %.1f + %.1fi\n", s.real, s.imag);
-   printf("Difference = %.1f + %.1fi", d.real, d.imag);
+   printf("Sum = %f + %fi\n", s.real, s.imag);
+   printf("Difference = %f + %fi", d.real, d.imag);
    return 0;
 }
 complex add(complex num1, complex num2)
