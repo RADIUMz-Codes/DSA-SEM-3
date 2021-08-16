@@ -1,5 +1,6 @@
 /*
-    4. WAP to read RollNo, Name, Address, Age & average-marks of 5 students in the class and display the details from function using structure and dynamic memory allocation.
+    4. WAP to read RollNo, Name, Address, Age & average-marks of 5 students in the class and display the details from function 
+    using structure and dynamic memory allocation.
 */
 
 #include <stdio.h>
