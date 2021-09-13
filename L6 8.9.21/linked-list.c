@@ -8,8 +8,10 @@ typedef struct node
     struct node *next;
 } node;
 
+node *head = NULL;
+
 node *create(node *);
-node *display(node *);
+void display(node *);
 node *insert_beg(node *);
 node *insert_end(node *);
 node *insert_anyloc(node *);
@@ -18,8 +20,6 @@ node *delt_end(node *);
 node *delt_anyloc(node *);
 int main()
 {
-    node *head = NULL;
-    head = (node *)malloc(sizeof(node));
 
     int choice = 0;
 
@@ -27,7 +27,7 @@ int main()
     while (choice < 9)
     {
 
-        printf("\nchoices\n");
+        printf("\nChoice\n");
         printf("1 : Create a Linked List \n");
         printf("2 : Insert at beginning into Linked List \n");
         printf("3 : Insert at end of the Linked List \n");
@@ -64,7 +64,7 @@ int main()
             head = delt_anyloc(head);
             break;
         case 8:
-            head = display(head);
+            display(head);
             break;
         default:
             break;
@@ -76,35 +76,42 @@ int main()
 node *create(node *head)
 {
     int d;
-    printf("Enter numbers , -1 to end\n");
+    printf("Enter numbers , -1 to end : ");
     scanf("%d", &d);
-    if (head == NULL)
-    {
-        head->data = d;
-        head->next = NULL;
-    }
 
     while (d != -1)
     {
-        printf("Enter numbers , -1 to end\n");
-        scanf("%d", &d);
         node *n = (node *)malloc(sizeof(node));
         n->data = d;
         n->next = NULL;
-        node *t = head;
-        while (t->next != NULL)
+        if (head == NULL)
         {
-            t = t->next;
+
+            head = n;
         }
-        t->next = n;
+
+        else
+        {
+            node *t = head;
+            while (t->next != NULL)
+            {
+                t = t->next;
+            }
+            t->next = n;
+        }
+        printf("Enter numbers , -1 to end : ");
+        scanf("%d", &d);
     }
+    return head;
 }
 
-node *display(node *head)
+void display(node *head)
 {
-    while (head != NULL)
+    node *t = head;
+    while (t != NULL)
     {
-        printf("%d -> ", head->data);
+        printf("%d -> ", t->data);
+        t = t->next;
     }
     printf("\n");
 }
@@ -118,6 +125,7 @@ node *insert_beg(node *head)
     n->data = d;
     n->next = head;
     head = n;
+    return head;
 }
 
 node *insert_end(node *head)
@@ -134,6 +142,7 @@ node *insert_end(node *head)
         t = t->next;
     }
     t->next = n;
+    return head;
 }
 
 node *insert_anyloc(node *head)
@@ -144,5 +153,52 @@ node *insert_anyloc(node *head)
     scanf("%d", &d);
     n->data = d;
     n->next = NULL;
-    
+    node *curr, *t;
+    curr = head;
+    while (curr->data == d)
+    {
+        t = curr->next;
+        curr->next = n;
+        n->next = t;
+    }
+    return head;
+}
+
+node *delt_beg(node *head)
+{
+    node *t = head;
+    head = (head)->next;
+    free(t);
+    return head;
+}
+
+node *delt_end(node *head)
+{
+    node *t, *p;
+    t = head;
+    while (t->next != NULL)
+    {
+        p = t;
+        t = t->next;
+    }
+    p->next = NULL;
+    free(t);
+    return head;
+}
+
+node *delt_anyloc(node *head)
+{
+    int d;
+    printf("Enter data to be deleted: ");
+    scanf("%d", &d);
+    node *t, *p;
+    t = head;
+    while (t->data != d)
+    {
+        p = t;
+        t = t->next;
+    }
+    p->next = t->next;
+    free(t);
+    return head;
 }
