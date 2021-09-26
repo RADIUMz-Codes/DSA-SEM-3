@@ -10,7 +10,7 @@ int main()
             scanf("%d", &a[i][j]);
         }
     }
-    printf("Enter elements of 1st array\n");
+    printf("Enter elements of 2nd array\n");
 
     for (int i = 0; i < 3; i++)
     {
