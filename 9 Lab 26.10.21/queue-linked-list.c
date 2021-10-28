@@ -5,7 +5,7 @@ struct node
 {
     int info;
     struct node *ptr;
-}*front,*rear,*temp,*front1;
+}*front,*rear,*temp,*temp;
  
 int frontelement();
 void enq(int data);
@@ -101,38 +101,38 @@ void enq(int data)
  
 void display()
 {
-    front1 = front;
+    temp = front;
  
-    if ((front1 == NULL) && (rear == NULL))
+    if ((temp == NULL) && (rear == NULL))
     {
         printf("Queue is empty");
         return;
     }
-    while (front1 != rear)
+    while (temp != rear)
     {
-        printf("%d ", front1->info);
-        front1 = front1->ptr;
+        printf("%d ", temp->info);
+        temp = temp->ptr;
     }
-    if (front1 == rear)
-        printf("%d", front1->info);
+    if (temp == rear)
+        printf("%d", temp->info);
 }
  
 void deq()
 {
-    front1 = front;
+    temp = front;
  
-    if (front1 == NULL)
+    if (temp == NULL)
     {
         printf("\n Error: Trying to display elements from empty queue");
         return;
     }
     else
-        if (front1->ptr != NULL)
+        if (temp->ptr != NULL)
         {
-            front1 = front1->ptr;
+            temp = temp->ptr;
             printf("\n Dequed value : %d", front->info);
             free(front);
-            front = front1;
+            front = temp;
         }
         else
         {

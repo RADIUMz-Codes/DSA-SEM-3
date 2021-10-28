@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-int circularQueue[4];
+int Queue[4];
 int front = -1, back = -1, n = 10;
 
 void enqueue(int number)
@@ -22,7 +22,7 @@ void enqueue(int number)
         else
             back = back + 1;
     }
-    circularQueue[back] = number;
+    Queue[back] = number;
 }
 void dequeue()
 {
@@ -31,7 +31,7 @@ void dequeue()
         printf("Queue Underflow\n");
         return;
     }
-    printf("Element deleted is : %d ", circularQueue[front]);
+    printf("Element deleted is : %d ", Queue[front]);
     if (front == back)
     {
         front = -1;
@@ -53,7 +53,7 @@ void Peek()
         printf("Queue Underflow\n");
         return;
     }
-    printf("Element peek is : %d ", circularQueue[front]);
+    printf("Element peek is : %d ", Queue[front]);
 }
 
 void display()
@@ -69,7 +69,7 @@ void display()
     {
         while (f <= r)
         {
-            printf("%d\n", circularQueue[f]);
+            printf("%d\n", Queue[f]);
             f++;
         }
     }
@@ -77,13 +77,13 @@ void display()
     {
         while (f <= n - 1)
         {
-            printf("%d\n", circularQueue[f]);
+            printf("%d\n", Queue[f]);
             f++;
         }
         f = 0;
         while (f <= r)
         {
-            printf("%d\n", circularQueue[f]);
+            printf("%d\n", Queue[f]);
             f++;
         }
     }
@@ -105,9 +105,9 @@ int main()
     while (1)
     {
 
-        printf("1. Add an item to the queue\n");
-        printf("2. Delete an item from the queue\n");
-        printf("3. Display the queue\n");
+        printf("1. Insert Element\n");
+        printf("2. Delete \n");
+        printf("3. Display\n");
         printf("4. Peek\n");
         printf("5. isEmpty\n");
         printf("6. isFull\n");
